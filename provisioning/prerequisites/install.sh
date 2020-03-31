@@ -29,5 +29,9 @@ deb http://apt.kubernetes.io/ kubernetes-xenial main
 EOF
 
 echo "[TASK 6] Install kubelet/kubeadm/kubectl"
+curl -s https://packages.cloud.google.com/apt/doc/apt-key.gpg | apt-key add -
+cat <<EOF >/etc/apt/sources.list.d/kubernetes.list
+deb http://apt.kubernetes.io/ kubernetes-xenial main
+EOF
 apt-get install -y kubelet kubeadm kubectl 
 sed -i 's/cgroup-driver=systemd/cgroup-driver=cgroupfs/g' /etc/systemd/system/kubelet.service.d/10-kubeadm.conf
