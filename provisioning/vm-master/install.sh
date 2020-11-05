@@ -21,6 +21,7 @@ $ sudo chown $(id -u):$(id -g) $HOME/.kube/config
 echo "[TASK 6] Install Dashboard"
 kubectl apply -f kubernetes-dashboard.yaml
 kubectl apply -f kubernetes-dashboard-rbac.yaml
+kubectl apply -f https://raw.githubusercontent.com/coreos/flannel/master/Documentation/kube-flannel.yml
 
 echo "[TASK 7] Display All Services"
 kubectl get services -n kube-system 
